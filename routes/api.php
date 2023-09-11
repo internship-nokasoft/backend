@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\Auth\authController;
+use App\Http\Controllers\Admin\Auth\ForgotPasswordController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+
+Route::post('/admin/register',[authController::class, 'register']);
+Route::post('/admin/login',[AuthController::class, 'login']);
+Route::get('/admin/details',[AuthController::class, 'getAdmin'])->middleware(['auth:sanctum','abilities:admin']);
+Route::post('/admin/logout',[AuthController::class, 'logout'])->middleware(['auth:sanctum','abilities:admin']);
+Route::post('/admin/forgot-password',[ForgotPasswordController::class, 'forgotPassword']);
+Route::post('/admin/reset-password', [ForgotPasswordController::class, 'reset']);
+Route::get('/admin/reset-password/{token}', [ForgotPasswordController::class, 'showResetForm'])->name('password.reset');

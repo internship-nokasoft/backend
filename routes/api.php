@@ -20,8 +20,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/admin/register',[authController::class, 'register']);
 Route::post('/admin/login',[AuthController::class, 'login']);
-Route::get('/admin/details',[AuthController::class, 'getAdmin'])->middleware(['auth:sanctum','abilities:admin']);
-Route::post('/admin/logout',[AuthController::class, 'logout'])->middleware(['auth:sanctum','abilities:admin']);
 Route::post('/admin/forgot-password',[ForgotPasswordController::class, 'forgotPassword']);
 Route::post('/admin/reset-password', [ForgotPasswordController::class, 'reset']);
 Route::get('/admin/reset-password/{token}', [ForgotPasswordController::class, 'showResetForm'])->name('password.reset');
+
+Route::middleware(['auth:sanctum','abilities:admin'])->group(function () {
+    Route::post('/admin/logout',[AuthController::class, 'logout']);
+    Route::get('/admin/details',[AuthController::class, 'getAdmin']);
+});

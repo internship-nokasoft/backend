@@ -15,7 +15,7 @@ class CategoryController extends Controller
         $this->categoryService = $categoryService;
     }
 
-    public function getCategory()
+    public function getAllCategories()
     {
         $categories = $this->categoryService->getAllCategories();
         return response()->json(['data' => $categories]);

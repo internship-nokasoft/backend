@@ -1,7 +1,7 @@
 <?php 
 
-namespace App\Services;
-use App\Repositories\AdminRepository;
+namespace App\Services\Api;
+use App\Repositories\Api\AdminRepository;
 use Illuminate\Support\Facades\Hash;
 
 class AdminService{

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\Auth\authController;
 use App\Http\Controllers\Admin\Auth\ForgotPasswordController;
+use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,4 +28,11 @@ Route::get('/admin/reset-password/{token}', [ForgotPasswordController::class, 's
 Route::middleware(['auth:sanctum','abilities:admin'])->group(function () {
     Route::post('/admin/logout',[AuthController::class, 'logout']);
     Route::get('/admin/details',[AuthController::class, 'getAdmin']);
+
+    //Category
+    Route::get('/admin/categories',[CategoryController::class, 'getCategory']);
+    Route::post('/admin/category',[CategoryController::class, 'store']);
+    Route::delete('/admin/category/{id}',[CategoryController::class, 'destroy']);
+    Route::put('/admin/category/{id}',[CategoryController::class, 'update']);
+    Route::delete('/admin/categories/delete/{ids}',[CategoryController::class, 'deleteSelectedCategories']);
 });

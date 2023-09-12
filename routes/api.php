@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\Auth\authController;
 use App\Http\Controllers\Admin\Auth\ForgotPasswordController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\SizeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -43,4 +44,13 @@ Route::middleware(['auth:sanctum', 'abilities:admin'])->group(function () {
     Route::post('/admin/size', [SizeController::class, 'store']);
     Route::delete('/admin/sizes/delete/{ids}', [SizeController::class, 'deleteSelectedSizes']);
     Route::put('/admin/size/{id}', [SizeController::class, 'update']);
+
+    //Color
+    Route::get('/admin/color', [ColorController::class, 'getAllColors']);
+    Route::delete('/admin/color/{id}', [ColorController::class, 'destroy']);
+    Route::post('/admin/color', [ColorController::class, 'store']);
+    Route::delete('/admin/colors/delete/{ids}', [ColorController::class, 'deleteSelectedColors']);
+    Route::put('/admin/color/{id}', [ColorController::class, 'update']);
+
+    
 });

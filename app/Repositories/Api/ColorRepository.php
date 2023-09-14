@@ -27,11 +27,11 @@ class ColorRepository{
 
     public function delete($color)
     {
-        $color->delete();
+        $color->forceDelete();
     }
 
     public function deleteSelectedColors(array $colorIds)
     {
-        Color::whereIn('id', $colorIds)->delete();
+        Color::whereIn('id', $colorIds)->forceDelete();
     }
 }

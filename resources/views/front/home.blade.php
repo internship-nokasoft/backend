@@ -69,7 +69,7 @@
                         <div class="view_gallery">View gallery</div>
                         <div class="stats">
                             <div class="stats-container">
-                                <span class="product_price">@money($product->price)</span>
+                                <span class="product_price">@money( $product->price)</span>
                                 <span class="product_name">{{ $product->product_name }}</span>
                                 <p>{{ $product->category_name }}</p>
 

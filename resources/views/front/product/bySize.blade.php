@@ -46,14 +46,6 @@
     </div>
 
     <div id="grid-selector">
-        {{-- <div id="grid-menu">
-            <ul>
-                <li class="largeGrid"><a href=""></a></li>
-                <li class="smallGrid"><a class="active" href=""></a></li>
-            </ul>
-        </div> --}}
-
-
     </div>
 
     <div id="grid">
@@ -62,7 +54,7 @@
                 <div class="make3D">
                     <div class="product-front">
                         <div class="shadow"></div>
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/1.jpg" alt="" />
+                        <img src="{{ asset($product->product_img) }}" alt="" />
                         <div class="image_overlay"></div>
                         <div class="add_to_cart">
                             <a href="{{ route('detail', [$product->id, $product->slug]) }}"

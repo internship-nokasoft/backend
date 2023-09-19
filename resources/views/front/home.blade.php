@@ -87,8 +87,7 @@
                                             <div><span style="background:{{ $color }}"></span></div>
                                         @endforeach
                                     </div>
-
-
+                                    
                                 </div>
                             </div>
                         </div>

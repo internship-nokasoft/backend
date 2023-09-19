@@ -39,7 +39,6 @@
             @if (Auth::guard('member')->check())
                 <li style="float: right;"><a href="{{ route('logout.member') }}">Logout</a></li>
             @else
-                <li style="float: right;"><a href="{{ route('login') }}">Login Admin</a></li>
                 <li style="float: right;"><a href="{{ route('login.member') }}">Login</a></li>
             @endif
 

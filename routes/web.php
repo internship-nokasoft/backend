@@ -37,10 +37,11 @@ Route::controller(ClientController::class)->group(function () {
     Route::get('/product-detail/{id}/{slug}', 'detail')->name('detail');
 
     //cart
-    Route::get('/cart', 'index')->name('cart');
+    Route::get('/cart', 'showcart')->name('cart');
     Route::post('/add-to-cart', 'addtoCart')->name('addtocart');
     Route::get('/remove-cart-item/{id}', 'remove')->name('removeitem');
-    Route::patch('update-cart', 'update')->name('update.cart');
+    Route::get('/cart/update/{id}', 'showItemUpdate')->name('show.cart.update');
+    Route::post('/update-cart', 'updateCart')->name('cart.update');
 
 
     Route::get('/category/{id}/{slug}', 'byCategory')->name('bycategory');

@@ -54,7 +54,7 @@
                                 <span class="h5">@money($product->price)</span>
                             </div>
                             <p>
-                                {{-- {{ $product->desc }} --}}
+                                {{ $product->desc }}
                             </p>
                             <div class="row">
                                 <dt class="col-3">Category:</dt>
@@ -87,18 +87,6 @@
                             <div class="col-md-4 col-6 mb-3">
                                 <label class="mb-2 d-block">Quantity</label>
                                 <div class="input-group mb-3" style="width: 170px;">
-                                    {{-- <button class="btn btn-white border border-secondary px-3" type="button"
-                                            id="button-addon1" data-mdb-ripple-color="dark">
-                                            <i class="fas fa-minus"></i>
-                                        </button>
-                                        <input type="text" id="num_order" name="num_order"
-                                            class="form-control text-center border border-secondary" value="1"
-                                            aria-label="Example text with button addon" />
-                                        <button class="btn btn-white border border-secondary px-3" type="button"
-                                            id="button-addon2" data-mdb-ripple-color="dark">
-                                            <i class="fas fa-plus"></i>
-                                        </button> --}}
-
                                     <button class="btn btn-primary btn-minus" type="button" onclick="decrementValue()">
                                         <i class="fa fa-minus"></i>
                                     </button>

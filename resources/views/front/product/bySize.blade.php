@@ -13,7 +13,6 @@
                 @foreach ($category_info as $category)
                     <li><a href="{{route('bycategory',[$category->id, $category->slug])}}">{{ $category->category_name }}</a></li>
                 @endforeach
-
             </ul>
         </div>
 
@@ -25,9 +24,6 @@
                     <li><a href="{{route('bycolor',[$color->id, $color->slug])}}"><span style="background:{{ $color->color }}"></span>{{ $color->color }}</a></li>
                 </ul>
             @endforeach
-
-
-
         </div>
 
         <h3>SIZES</h3>
@@ -37,12 +33,7 @@
                     <li><a href="{{route('bysize',[$size->id, $size->slug])}}">{{ $size->size_name }}</a></li>
                 </ul>
             @endforeach
-
-
-
         </div>
-
-
     </div>
 
     <div id="grid-selector">

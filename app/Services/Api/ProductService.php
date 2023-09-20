@@ -53,6 +53,21 @@ class ProductService
 
     public function updateProduct($product, $data)
     {
+        if (isset($data['product_img'])) {
+            $image = $data['product_img'];
+        
+            $uploadPath = public_path('upload');
+            $img_name = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            $img_url = 'upload/' . $img_name;
+            $fullPath = $uploadPath . '/' . $img_name;
+        
+            if (file_exists($fullPath)) {
+                unlink($fullPath);
+            }
+        
+            $image->move($uploadPath, $img_name);
+            $data['product_img'] = $img_url;
+        }
         return $this->productRepository->update($product, $data);
     }
 

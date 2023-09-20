@@ -82,13 +82,16 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'product_name' => 'required|unique:products',
+            'product_name' => 'required',
             'quantity' => 'required',
             'price' => 'required',
             'short_desc' => 'required',
             'desc' => 'required',
-            'product_img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
+
+        if ($request->hasFile('product_img')) {
+            $rules['product_img'] = 'image|mimes:jpeg,png,jpg,gif,svg|max:2048';
+        }
 
         $validator = Validator::make($request->all(), $rules);
 
@@ -110,10 +113,13 @@ class ProductController extends Controller
             'desc' => $request->input('desc'),
             'color' => $request->input('color'),
             'size' => $request->input('size'),
-            'product_img' => $request->file('product_img'),
             'price' => $request->input('price'),
             'quantity' => $request->input('quantity'),
         ];
+
+        if ($request->hasFile('product_img')) {
+            $data['product_img'] = $request->file('product_img');
+        }
 
         $updatedProduct = $this->productService->updateProduct($product, $data);
 

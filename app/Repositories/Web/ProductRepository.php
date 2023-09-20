@@ -33,7 +33,7 @@ class ProductRepository
 
     public function getProductsByCategory($id)
     {
-        $products = Product::where('category_id', $id)->latest()->paginate(12);
+        $products = Product::where('category_id', $id)->paginate(12);
         foreach ($products as $product) {
             $product->size = explode(',', $product->size);
             $product->color = explode(',', $product->color);
@@ -44,7 +44,7 @@ class ProductRepository
 
     public function getProductsByColor($color)
     {
-        $products = Product::where('color', 'like', "%{$color}%")->latest()->paginate(12);
+        $products = Product::where('color', 'like', "%{$color}%")->paginate(12);
         foreach ($products as $product) {
             $product->size = explode(',', $product->size);
             $product->color = explode(',', $product->color);
@@ -55,7 +55,7 @@ class ProductRepository
 
     public function getProductsBySize($size)
     {
-        $products = Product::where('size', 'like', "%{$size}%")->latest()->paginate(12);
+        $products = Product::where('size', 'like', "%{$size}%")->paginate(12);
         foreach ($products as $product) {
             $product->size = explode(',', $product->size);
             $product->color = explode(',', $product->color);

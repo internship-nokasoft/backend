@@ -50,7 +50,7 @@
                         <div class="add_to_cart">
                             <a href="{{ route('detail', [$product->id, $product->slug]) }}"
                                 style="text-decoration: none; color:white">View detail</a></div>
-                        <div class="view_gallery">View gallery</div>
+                        {{-- <div class="view_gallery">View gallery</div> --}}
                         <div class="stats">
                             <div class="stats-container">
                                 <span class="product_price">@money($product->price)</span>

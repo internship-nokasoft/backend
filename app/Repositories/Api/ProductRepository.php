@@ -46,14 +46,19 @@ class ProductRepository
     {
         $categoryIds = Product::whereIn('id', $productIds)->pluck('category_id')->toArray();
         Product::whereIn('id', $productIds)->forceDelete();
-       
+
         $uniqueCategoryIds = array_unique($categoryIds);
 
-        
+
         foreach ($uniqueCategoryIds as $categoryId) {
-            $productCount = count(array_keys($categoryIds, $categoryId)); 
+            $productCount = count(array_keys($categoryIds, $categoryId));
             Category::where('id', $categoryId)->decrement('product_cout', $productCount);
         }
     }
-    
+
+    public function incrementProductCount($id)
+    {
+        Category::where('id', $id)->increment('product_cout', 1);
+    }
+
 }

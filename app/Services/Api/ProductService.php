@@ -42,7 +42,7 @@ class ProductService
         try {
             $product = $this->productRepository->create($data);
             $id = $data['category_id'];
-            Category::where('id', $id)->increment('product_cout', 1);
+            $this->productRepository->incrementProductCount($id);
             return $product;
         } catch (\Exception $e) {
             throw $e;

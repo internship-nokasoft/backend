@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\User\Auth\userAuthController;
+use App\Http\Controllers\User\Auth\UserAuthController;
 use App\Http\Controllers\User\ClientController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +20,7 @@ Route::get('/', function () {
 })->name('home');
 
 
-Route::prefix('member')->controller(userAuthController::class)->group(function () {
+Route::prefix('member')->controller(UserAuthController::class)->group(function () {
     Route::get('/register', 'register')->name('register.member');
     Route::post('/store', 'store')->name('store.member');
     Route::get('/login', 'login')->name('login.member');

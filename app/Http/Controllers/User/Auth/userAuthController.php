@@ -8,7 +8,7 @@ use App\Services\Web\MemberService;
 use Illuminate\Http\Request;
 
 
-class userAuthController extends Controller
+class UserAuthController extends Controller
 {
 
     protected $memberService;

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\Auth\authController;
+use App\Http\Controllers\Admin\Auth\AuthController;
 use App\Http\Controllers\Admin\Auth\ForgotPasswordController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ColorController;
@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::post('/admin/register', [authController::class, 'register']);
+Route::post('/admin/register', [AuthController::class, 'register']);
 Route::post('/admin/login', [AuthController::class, 'login']);
 Route::post('/admin/forgot-password', [ForgotPasswordController::class, 'forgotPassword']);
 Route::post('/admin/reset-password', [ForgotPasswordController::class, 'reset']);

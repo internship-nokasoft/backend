@@ -15,7 +15,6 @@
                             href="{{ route('bycategory', [$category->id, $category->slug]) }}">{{ $category->category_name }}</a>
                     </li>
                 @endforeach
-
             </ul>
         </div>
 

@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Services\Api\ProductService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\ValidationException;
 
 class ProductController extends Controller
 {

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ClientController extends Controller
 {
-    protected $clientService;
+    protected ClientService $clientService;
 
     public function __construct(ClientService $clientService)
     {

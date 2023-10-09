@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class ColorController extends Controller
 {
-    protected $colorService;
+    protected ColorService $colorService;
 
     public function __construct(ColorService $colorService)
     {

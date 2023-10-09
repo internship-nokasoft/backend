@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class SizeController extends Controller
 {
-    protected $sizeService;
+    protected SizeService $sizeService;
 
     public function __construct(SizeService $sizeService)
     {

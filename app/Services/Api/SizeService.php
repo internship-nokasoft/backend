@@ -6,7 +6,7 @@ use App\Repositories\Api\SizeRepository;
 
 class SizeService
 {
-    protected $sizeRepository;
+    protected SizeRepository $sizeRepository;
 
     public function __construct(SizeRepository $sizeRepository)
     {

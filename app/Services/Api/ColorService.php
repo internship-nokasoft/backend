@@ -5,7 +5,7 @@ use App\Repositories\Api\ColorRepository;
 
 
 class ColorService{
-    protected $colorRepository;
+    protected ColorRepository $colorRepository;
 
     public function __construct(ColorRepository $colorRepository)
     {

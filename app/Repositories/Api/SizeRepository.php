@@ -6,19 +6,25 @@ use App\Models\Size;
 
 class SizeRepository
 {
+
+    protected Size $size;
+
+    public function __construct(Size $size){
+        $this->size = $size;
+    }
     public function all()
     {
-        return Size::latest()->get();
+        return $this->size::latest()->get();
     }
 
     public function find($id)
     {
-        return Size::find($id);
+        return $this->size::find($id);
     }
 
     public function create($data)
     {
-        return Size::create($data);
+        return $this->size::create($data);
     }
 
     public function update($size, $data)
@@ -34,7 +40,7 @@ class SizeRepository
 
     public function deleteSelectedSizes(array $sizeIds)
     {
-        Size::whereIn('id', $sizeIds)->forceDelete();
+        $this->size::whereIn('id', $sizeIds)->forceDelete();
     }
 
 }

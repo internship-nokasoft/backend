@@ -1,17 +1,26 @@
 <?php
 
 namespace App\Repositories\Api;
+
 use App\Models\Admin;
 
-class AdminRepository{
-    
+class AdminRepository
+{
+
+    protected Admin $admin;
+
+    public function __construct(Admin $admin)
+    {
+        $this->admin = $admin;
+    }
+
     public function create(array $data)
     {
-        return Admin::create($data);
+        return $this->admin::create($data);
     }
 
     public function findByEmail($email)
     {
-        return Admin::where('email', $email)->first();
+        return $this->admin::where('email', $email)->first();
     }
 }

@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\Mail;
 class MemberService
 {
 
-    protected $memberRepository;
-    protected $cartRepository;
+    protected MemberRepository $memberRepository;
+    protected CartRepository $cartRepository;
 
     public function __construct(MemberRepository $memberRepository, CartRepository $cartRepository)
     {

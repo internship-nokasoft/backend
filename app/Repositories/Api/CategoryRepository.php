@@ -7,19 +7,26 @@ use App\Models\Category;
 
 class CategoryRepository
 {
+
+    protected Category $category;
+
+    public function __construct(Category $category){
+        $this->category = $category; 
+    }
+
     public function all()
     {
-        return Category::latest()->get();
+        return $this->category::latest()->get();
     }
 
     public function find($id)
     {
-        return Category::find($id);
+        return $this->category::find($id);
     }
 
     public function create($data)
     {
-        return Category::create($data);
+        return $this->category::create($data);
     }
 
     public function update($category, $data)
@@ -35,7 +42,12 @@ class CategoryRepository
 
     public function deleteSelectedCategories(array $categoryIds)
     {
-        Category::whereIn('id', $categoryIds)->forceDelete();
+        $this->category::whereIn('id', $categoryIds)->forceDelete();
+    }
+
+    public function getCategoryName($id)
+    {
+        return $this->category::where('id', $id)->value('category_name');
     }
 
 }

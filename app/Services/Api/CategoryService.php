@@ -7,7 +7,7 @@ use App\Repositories\Api\CategoryRepository;
 class CategoryService
 {
 
-    protected $categoryRepository;
+    protected CategoryRepository $categoryRepository;
 
     public function __construct(CategoryRepository $categoryRepository)
     {

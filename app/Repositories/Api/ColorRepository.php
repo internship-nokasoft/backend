@@ -1,22 +1,31 @@
 <?php
 
 namespace App\Repositories\Api;
+
 use App\Models\Color;
 
-class ColorRepository{
+class ColorRepository
+{
+
+    protected Color $color;
+
+    public function __construct(Color $color)
+    {
+        $this->color = $color;
+    }
     public function all()
     {
-        return Color::latest()->get();
+        return $this->color::latest()->get();
     }
 
     public function find($id)
     {
-        return Color::find($id);
+        return $this->color::find($id);
     }
 
     public function create($data)
     {
-        return Color::create($data);
+        return $this->color::create($data);
     }
 
     public function update($color, $data)
@@ -32,6 +41,6 @@ class ColorRepository{
 
     public function deleteSelectedColors(array $colorIds)
     {
-        Color::whereIn('id', $colorIds)->forceDelete();
+        $this->color::whereIn('id', $colorIds)->forceDelete();
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminService{
 
-    protected $adminRepository;
+    protected AdminRepository $adminRepository;
 
     public function __construct(AdminRepository $adminRepository){
         $this->adminRepository = $adminRepository;

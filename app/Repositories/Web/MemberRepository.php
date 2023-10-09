@@ -7,10 +7,15 @@ use Illuminate\Support\Str;
 
 class MemberRepository{
 
+    protected Member $member;
+
+    public function __construct(Member $member){
+        $this->member = $member;
+    }
 
     public function createMember($data)
     {
-        return Member::create([
+        return $this->member::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password'])
@@ -19,7 +24,7 @@ class MemberRepository{
 
     public function findByEmail($email)
     {
-        return Member::where('email', $email)->first();
+        return $this->member::where('email', $email)->first();
     }
 
     public function createOrUpdateToken(Member $member)
@@ -36,6 +41,6 @@ class MemberRepository{
 
     public function findByToken($token)
     {
-        return Member::where('remember_token', $token)->first();
+        return $this->member::where('remember_token', $token)->first();
     }
 }

@@ -19,11 +19,6 @@ class ProductRepository
         return Product::find($id);
     }
 
-    public function getCategoryName($id)
-    {
-        return Category::where('id', $id)->value('category_name');
-    }
-
     public function create(array $data)
     {
         return Product::create($data);

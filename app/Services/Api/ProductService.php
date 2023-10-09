@@ -3,16 +3,19 @@
 namespace App\Services\Api;
 
 use App\Models\Category;
+use App\Repositories\Api\CategoryRepository;
 use App\Repositories\Api\ProductRepository;
 
 
 class ProductService
 {
-    protected $productRepository;
+    protected ProductRepository $productRepository;
+    protected CategoryRepository $categoryRepository;
 
-    public function __construct(ProductRepository $productRepository)
+    public function __construct(ProductRepository $productRepository, CategoryRepository $categoryRepository)
     {
         $this->productRepository = $productRepository;
+        $this->categoryRepository = $categoryRepository;
     }
 
     public function getAllProducts()
@@ -83,7 +86,7 @@ class ProductService
 
     public function getCategoryName($id)
     {
-        return $this->productRepository->getCategoryName($id);
+        return $this->categoryRepository->getCategoryName($id);
     }
 
     public function deleteSelectedProducts(array $productIds)

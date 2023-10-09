@@ -5,13 +5,18 @@ use App\Models\Size;
 
 class SizeRepository{
 
+    protected Size $size;
+
+    public function __construct(Size $size){
+        $this->size = $size;
+    }
 
     public function getAllSize(){
-        return Size::latest()->get();
+        return $this->size::latest()->get();
     }
 
     public function getNameSizeById($id){
-        return Size::where('id', $id)->value('size_name');
+        return $this->size::where('id', $id)->value('size_name');
     }
 
 }

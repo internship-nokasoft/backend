@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Auth;
 
 class ClientService
 {
-    protected $productRepository;
-    protected $categoryRepository;
-    protected $sizeRepository;
-    protected $colorRepository;
-    protected $cartRepository;
+    protected ProductRepository $productRepository;
+    protected CategoryRepository $categoryRepository;
+    protected SizeRepository $sizeRepository;
+    protected ColorRepository $colorRepository;
+    protected CartRepository $cartRepository;
 
     public function __construct(
         ProductRepository $productRepository,
@@ -115,7 +115,7 @@ class ClientService
         if (isset($cart[$product_id])) {
             $cart[$product_id]['quantity'] += $quantity;
         } else {
-            $product_info = $this->cartRepository->findProduct($product_id);
+            $product_info = $this->productRepository->findProduct($product_id);
             $product_name = $product_info->product_name;
             $product_slug = $product_info->slug;
             $img = $product_info->product_img;
@@ -159,7 +159,7 @@ class ClientService
 
     public function getProductInfo($id)
     {
-        return $this->cartRepository->findProduct($id);
+        return $this->productRepository->findProduct($id);
     }
 
     public function getItemForUser($cartItemId)

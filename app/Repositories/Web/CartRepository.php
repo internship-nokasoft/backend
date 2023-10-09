@@ -9,9 +9,15 @@ use App\Models\Product;
 
 class CartRepository
 {
+
+    protected Cart $cart;
+
+    public function __construct(Cart $cart){
+        $this->cart = $cart;
+    }
     public function getCartItem($user_id, $product_id, $size, $color)
     {
-        return Cart::where('user_id', $user_id)
+        return $this->cart::where('user_id', $user_id)
             ->where('product_id', $product_id)
             ->where('size', $size)
             ->where('color', $color)
@@ -20,7 +26,7 @@ class CartRepository
 
     public function createCartItem($user_id, $product_id, $size, $color, $quantity)
     {
-        return Cart::create([
+        return $this->cart::create([
             'user_id' => $user_id,
             'product_id' => $product_id,
             'size' => $size,
@@ -34,19 +40,14 @@ class CartRepository
         $cartItem->update(['quantity' => $cartItem->quantity + $quantity]);
     }
 
-    public function findProduct($id)
-    {
-        return Product::findOrFail($id);
-    }
-
     public function getCartByUserId($userId)
     {
-        return Cart::where('user_id', $userId)->get();
+        return $this->cart::where('user_id', $userId)->get();
     }
 
     public function removeCartItemForUser($userId, $cartItemId)
     {
-        Cart::where('user_id', $userId)->where('id', $cartItemId)->forceDelete();
+        $this->cart::where('user_id', $userId)->where('id', $cartItemId)->forceDelete();
     }
 
     public function removeCartItemFromSession($cartItemId)
@@ -61,6 +62,6 @@ class CartRepository
 
     public function getItemForUser($userId, $cartItemId)
     {
-        return Cart::where('user_id', $userId)->where('id', $cartItemId)->first();
+        return $this->cart::where('user_id', $userId)->where('id', $cartItemId)->first();
     }
 }

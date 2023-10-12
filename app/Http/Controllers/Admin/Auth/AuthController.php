@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
 
-    protected AdminService $adminService;
+    protected $adminService;
 
     public function __construct(AdminService $adminService){
         $this->adminService = $adminService;

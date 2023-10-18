@@ -41,19 +41,19 @@ class ProductController extends Controller
 
         $category_id = $request->input('category_id');
 
-        $data = [
-            'product_name' => $request->input('product_name'),
-            'category_id' => $request->input('category_id'),
-            'short_desc' => $request->input('short_desc'),
-            'desc' => $request->input('desc'),
-            'color' => $request->input('color'),
-            'size' => $request->input('size'),
-            'product_img' => $request->file('product_img'),
-            'category_name' => $this->productService->getCategoryName($category_id),
-            'price' => $request->input('price'),
-            'quantity' => $request->input('quantity'),
-        ];
+        $data = $request->only([
+            'product_name',
+            'category_id',
+            'short_desc',
+            'desc',
+            'color',
+            'size',
+            'price',
+            'quantity'
+        ]);
 
+        $data['product_img'] = $request->file('product_img');
+        $data['category_name'] = $this->productService->getCategoryName($request->input('category_id'));
 
         $product = $this->productService->createProduct($data);
 
@@ -106,15 +106,16 @@ class ProductController extends Controller
 
         $category_id = $request->input('category_id');
 
-        $data = [
-            'product_name' => $request->input('product_name'),
-            'short_desc' => $request->input('short_desc'),
-            'desc' => $request->input('desc'),
-            'color' => $request->input('color'),
-            'size' => $request->input('size'),
-            'price' => $request->input('price'),
-            'quantity' => $request->input('quantity'),
-        ];
+        $data = $request->only([
+            'product_name',
+            'short_desc',
+            'desc',
+            'color',
+            'size',
+            'price',
+            'quantity'
+        ]);
+
 
         if ($request->hasFile('product_img')) {
             $data['product_img'] = $request->file('product_img');

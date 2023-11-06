@@ -17,7 +17,7 @@ class CartRepository
     }
     public function getCartItem($user_id, $product_id, $size, $color)
     {
-        return $this->cart::where('user_id', $user_id)
+        return $this->cart->where('user_id', $user_id)
             ->where('product_id', $product_id)
             ->where('size', $size)
             ->where('color', $color)
@@ -26,7 +26,7 @@ class CartRepository
 
     public function createCartItem($user_id, $product_id, $size, $color, $quantity)
     {
-        return $this->cart::create([
+        return $this->cart->create([
             'user_id' => $user_id,
             'product_id' => $product_id,
             'size' => $size,
@@ -42,12 +42,12 @@ class CartRepository
 
     public function getCartByUserId($userId)
     {
-        return $this->cart::where('user_id', $userId)->get();
+        return $this->cart->where('user_id', $userId)->get();
     }
 
     public function removeCartItemForUser($userId, $cartItemId)
     {
-        $this->cart::where('user_id', $userId)->where('id', $cartItemId)->forceDelete();
+        $this->cart->where('user_id', $userId)->where('id', $cartItemId)->forceDelete();
     }
 
     public function removeCartItemFromSession($cartItemId)
@@ -62,6 +62,6 @@ class CartRepository
 
     public function getItemForUser($userId, $cartItemId)
     {
-        return $this->cart::where('user_id', $userId)->where('id', $cartItemId)->first();
+        return $this->cart->where('user_id', $userId)->where('id', $cartItemId)->first();
     }
 }

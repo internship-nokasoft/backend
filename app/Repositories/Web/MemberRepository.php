@@ -15,7 +15,7 @@ class MemberRepository{
 
     public function createMember($data)
     {
-        return $this->member::create([
+        return $this->member->create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password'])
@@ -24,7 +24,7 @@ class MemberRepository{
 
     public function findByEmail($email)
     {
-        return $this->member::where('email', $email)->first();
+        return $this->member->where('email', $email)->first();
     }
 
     public function createOrUpdateToken(Member $member)
@@ -41,6 +41,6 @@ class MemberRepository{
 
     public function findByToken($token)
     {
-        return $this->member::where('remember_token', $token)->first();
+        return $this->member->where('remember_token', $token)->first();
     }
 }

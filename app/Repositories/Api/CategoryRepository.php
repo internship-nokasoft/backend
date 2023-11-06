@@ -16,17 +16,17 @@ class CategoryRepository
 
     public function all()
     {
-        return $this->category::latest()->get();
+        return $this->category->latest()->get();
     }
 
     public function find($id)
     {
-        return $this->category::find($id);
+        return $this->category->find($id);
     }
 
     public function create($data)
     {
-        return $this->category::create($data);
+        return $this->category->create($data);
     }
 
     public function update($category, $data)
@@ -42,12 +42,12 @@ class CategoryRepository
 
     public function deleteSelectedCategories(array $categoryIds)
     {
-        $this->category::whereIn('id', $categoryIds)->forceDelete();
+        $this->category->whereIn('id', $categoryIds)->forceDelete();
     }
 
     public function getCategoryName($id)
     {
-        return $this->category::where('id', $id)->value('category_name');
+        return $this->category->where('id', $id)->value('category_name');
     }
 
 }

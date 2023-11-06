@@ -16,11 +16,11 @@ class AdminRepository
 
     public function create(array $data)
     {
-        return $this->admin::create($data);
+        return $this->admin->create($data);
     }
 
     public function findByEmail($email)
     {
-        return $this->admin::where('email', $email)->first();
+        return $this->admin->where('email', $email)->first();
     }
 }

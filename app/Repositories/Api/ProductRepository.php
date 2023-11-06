@@ -9,19 +9,26 @@ use App\Models\Product;
 class ProductRepository
 {
 
+    protected Product $product ;
+    protected Category $category;
+
+    public function __construct(Product $product, Category $category){
+        $this->product = $product;
+        $this->category = $category;
+    }
     public function getAll()
     {
-        return Product::latest()->get();
+        return $this->product->latest()->get();
     }
 
     public function find($id)
     {
-        return Product::find($id);
+        return $this->product->find($id);
     }
 
     public function create(array $data)
     {
-        return Product::create($data);
+        return $this->product->create($data);
     }
 
     public function update($product, $data)
@@ -34,13 +41,13 @@ class ProductRepository
     {
         $categoryId = $product->category_id;
         $product->forceDelete();
-        Category::where('id', $categoryId)->decrement('product_cout', 1);
+        $this->category->where('id', $categoryId)->decrement('product_cout', 1);
     }
 
     public function deleteSelectedProduct(array $productIds)
     {
-        $categoryIds = Product::whereIn('id', $productIds)->pluck('category_id')->toArray();
-        Product::whereIn('id', $productIds)->forceDelete();
+        $categoryIds = $this->product->whereIn('id', $productIds)->pluck('category_id')->toArray();
+        $this->product->whereIn('id', $productIds)->forceDelete();
 
         $uniqueCategoryIds = array_unique($categoryIds);
 

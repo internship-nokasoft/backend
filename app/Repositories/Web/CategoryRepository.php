@@ -13,11 +13,11 @@ class CategoryRepository{
     }
 
     public function getAllCategory(){
-        return $this->category::latest()->get();
+        return $this->category->latest()->get();
     }
 
     public function findCategoryById($id){
-        return $this->category::findOrFail($id);
+        return $this->category->findOrFail($id);
     }
 
 

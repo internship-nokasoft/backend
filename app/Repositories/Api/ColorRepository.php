@@ -15,17 +15,17 @@ class ColorRepository
     }
     public function all()
     {
-        return $this->color::latest()->get();
+        return $this->color->latest()->get();
     }
 
     public function find($id)
     {
-        return $this->color::find($id);
+        return $this->color->find($id);
     }
 
     public function create($data)
     {
-        return $this->color::create($data);
+        return $this->color->create($data);
     }
 
     public function update($color, $data)
@@ -41,6 +41,6 @@ class ColorRepository
 
     public function deleteSelectedColors(array $colorIds)
     {
-        $this->color::whereIn('id', $colorIds)->forceDelete();
+        $this->color->whereIn('id', $colorIds)->forceDelete();
     }
 }

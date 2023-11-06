@@ -12,11 +12,11 @@ class SizeRepository{
     }
 
     public function getAllSize(){
-        return $this->size::latest()->get();
+        return $this->size->latest()->get();
     }
 
     public function getNameSizeById($id){
-        return $this->size::where('id', $id)->value('size_name');
+        return $this->size->where('id', $id)->value('size_name');
     }
 
 }

@@ -12,10 +12,10 @@ class ColorRepository{
     }
 
     public function getAllColor(){
-       return $this->color::latest()->get();
+       return $this->color->latest()->get();
     }
 
     public function getNameColorById($id){
-        return $this->color::where('id', $id)->value('color');
+        return $this->color->where('id', $id)->value('color');
     }
 }
